@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow secure team task and issue management.">
+  <meta name="color-scheme" content="dark light">
+  <title>TaskFlow</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232f6cf4'/%3E%3Cpath d='M17 33l9 9 21-23' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <svg class="svg-library" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="icon-task" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-bug" viewBox="0 0 24 24"><path d="M8 3l1.5 3M16 3l-1.5 3M5 10H2M5 15H2M19 10h3M19 15h3"/><rect x="5" y="6" width="14" height="15" rx="7"/><path d="M12 9v9M6 13h12"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M14 8l4 4-4 4M18 12H8"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  <section class="auth-screen" id="auth-screen" aria-labelledby="auth-title">
+    <div class="auth-product">
+      <a class="wordmark wordmark-light" href="#" aria-label="TaskFlow home"><span class="wordmark-icon"><svg><use href="#icon-task"/></svg></span><span>TASKFLOW</span></a>
+      <div class="auth-product-copy">
+        <span class="overline">One workspace. Clear ownership.</span>
+        <h1>Work moves faster when everyone knows what’s next.</h1>
+        <p>Tasks, bug reports and handoffs for Erblin, Shkumbin and Altin—kept private and accountable.</p>
+      </div>
+      <div class="auth-assurance"><svg><use href="#icon-lock"/></svg><div><strong>Protected workspace</strong><span>Server-side sessions · encrypted password hashes · access controls</span></div></div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-form-wrap">
+        <span class="mobile-wordmark wordmark"><span class="wordmark-icon"><svg><use href="#icon-task"/></svg></span><span>TASKFLOW</span></span>
+        <div class="auth-heading"><span class="overline">Team sign in</span><h2 id="auth-title">Access your workspace</h2><p>Use the credentials provided by your administrator.</p></div>
+        <form id="login-form" novalidate>
+          <div class="form-alert" id="login-error" role="alert"></div>
+          <label class="field"><span>Username</span><input id="login-username" name="username" autocomplete="username" maxlength="40" placeholder="erblin" required></label>
+          <label class="field"><span>Password</span><span class="password-field"><input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="256" placeholder="Enter your password" required><button id="toggle-password" type="button" aria-label="Show password">Show</button></span></label>
+          <button class="button button-primary auth-submit" id="login-submit" type="submit"><span>Sign in</span></button>
+        </form>
+        <p class="auth-footnote"><svg><use href="#icon-lock"/></svg>Your password is never stored in the browser.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="app hidden" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <a class="wordmark" href="#" aria-label="TaskFlow dashboard"><span class="wordmark-icon"><svg><use href="#icon-task"/></svg></span><span>TASKFLOW</span></a>
+        <button class="sidebar-close icon-button" id="sidebar-close" type="button" aria-label="Close navigation"><svg><use href="#icon-x"/></svg></button>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <span class="nav-label">Workspace</span>
+        <button class="nav-item active" type="button" data-view="dashboard"><svg><use href="#icon-grid"/></svg><span>Overview</span></button>
+        <button class="nav-item" type="button" data-view="tasks"><svg><use href="#icon-task"/></svg><span>My tasks</span><b id="nav-task-count">0</b></button>
+        <button class="nav-item" type="button" data-view="bugs"><svg><use href="#icon-bug"/></svg><span>Bug reports</span><b id="nav-bug-count">0</b></button>
+      </nav>
+      <div class="sidebar-insight">
+        <span>Assigned to you</span>
+        <strong id="sidebar-assigned-count">0</strong>
+        <small>active work items</small>
+        <div class="mini-progress"><i id="sidebar-progress"></i></div>
+      </div>
+      <div class="profile-menu">
+        <span class="avatar" id="sidebar-avatar">E</span>
+        <span class="profile-copy"><strong id="sidebar-name">Erblin</strong><small id="sidebar-role">Developer</small></span>
+        <button class="icon-button" id="logout-button" type="button" aria-label="Sign out" title="Sign out"><svg><use href="#icon-logout"/></svg></button>
+      </div>
+    </aside>
+    <div class="sidebar-shade" id="sidebar-shade"></div>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-left"><button class="menu-button icon-button" id="menu-button" type="button" aria-label="Open navigation"><svg><use href="#icon-menu"/></svg></button><div><span class="breadcrumb">TaskFlow / <b id="breadcrumb-current">Overview</b></span><h1 id="page-title">Overview</h1></div></div>
+        <div class="topbar-actions"><span class="sync-state"><i></i>Securely synced</span><button class="icon-button" id="theme-button" type="button" aria-label="Switch theme"><svg><use id="theme-icon" href="#icon-sun"/></svg></button><span class="avatar avatar-small" id="topbar-avatar">E</span></div>
+      </header>
+
+      <div class="page">
+        <section class="view active" id="dashboard-view">
+          <div class="welcome-row">
+            <div><span class="overline" id="today-label"></span><h2>Good to see you, <span id="welcome-name">Erblin</span>.</h2><p>Here is the work that needs your attention.</p></div>
+            <div class="welcome-actions"><button class="button button-secondary" type="button" data-new-bug><svg><use href="#icon-bug"/></svg>Report bug</button><button class="button button-primary" type="button" data-new-task><svg><use href="#icon-plus"/></svg>New task</button></div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric"><span class="metric-label">Open tasks <i class="tone-blue"></i></span><strong id="metric-open-tasks">0</strong><small id="metric-task-caption">Nothing pending</small></article>
+            <article class="metric"><span class="metric-label">In progress <i class="tone-violet"></i></span><strong id="metric-progress">0</strong><small>Active right now</small></article>
+            <article class="metric"><span class="metric-label">Open bugs <i class="tone-red"></i></span><strong id="metric-open-bugs">0</strong><small>Awaiting resolution</small></article>
+            <article class="metric metric-accent"><div><span class="metric-label">Completion rate</span><strong id="metric-completion">0%</strong><small>Across visible tasks</small></div><span class="progress-orbit" id="progress-orbit"><i></i></span></article>
+          </div>
+
+          <div class="dashboard-layout">
+            <article class="surface queue-surface">
+              <div class="surface-head"><div><h3>Your work queue</h3><p>Tasks and bugs assigned to you</p></div><button class="quiet-button" type="button" data-view-link="tasks">See all <svg><use href="#icon-arrow"/></svg></button></div>
+              <div class="queue-list" id="work-queue"></div>
+            </article>
+            <article class="surface activity-surface">
+              <div class="surface-head"><div><h3>Recently reported</h3><p>Issues created by your team</p></div></div>
+              <div class="activity-list" id="recent-bugs"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="tasks-view">
+          <div class="view-heading"><div><span class="overline">Execution</span><h2>Tasks</h2><p>Work you created or that has been assigned to you.</p></div><button class="button button-primary" type="button" data-new-task><svg><use href="#icon-plus"/></svg>New task</button></div>
+          <div class="control-bar"><label class="search"><svg><use href="#icon-search"/></svg><input id="task-search" type="search" placeholder="Search by title or description"></label><div class="segmented" id="task-filters"><button class="active" type="button" data-value="all">All</button><button type="button" data-value="todo">To do</button><button type="button" data-value="in-progress">In progress</button><button type="button" data-value="done">Done</button></div><select id="task-sort" aria-label="Sort tasks"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="priority">Priority</option></select></div>
+          <div class="surface data-surface"><div class="data-header task-columns"><span>Task</span><span>Assignee</span><span>Due</span><span>Status</span><span></span></div><div id="task-list"></div></div>
+        </section>
+
+        <section class="view" id="bugs-view">
+          <div class="view-heading"><div><span class="overline">Quality</span><h2>Bug reports</h2><p>Issues you reported or that need your attention.</p></div><button class="button button-primary" type="button" data-new-bug><svg><use href="#icon-plus"/></svg>Report bug</button></div>
+          <div class="control-bar bug-controls"><label class="search"><svg><use href="#icon-search"/></svg><input id="bug-search" type="search" placeholder="Search title, description or ID"></label><select id="bug-status-filter" aria-label="Filter bugs by status"><option value="all">All statuses</option><option value="open">Open</option><option value="in-progress">In progress</option><option value="testing">Testing</option><option value="resolved">Resolved</option><option value="closed">Closed</option></select><select id="bug-priority-filter" aria-label="Filter bugs by priority"><option value="all">All priorities</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select><select id="bug-sort" aria-label="Sort bugs"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="priority">Priority</option></select></div>
+          <div class="surface data-surface"><div class="data-header bug-columns"><span>Issue</span><span>Reporter</span><span>Priority</span><span>Status</span><span></span></div><div id="bug-list"></div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="dialog" id="task-dialog">
+    <form id="task-form" novalidate>
+      <div class="dialog-head"><div><span class="overline">Task</span><h2 id="task-dialog-title">Create a task</h2></div><button class="icon-button dialog-close" type="button" aria-label="Close"><svg><use href="#icon-x"/></svg></button></div>
+      <input id="task-id" type="hidden">
+      <div class="form-alert" id="task-error" role="alert"></div>
+      <label class="field"><span>Title</span><input id="task-title" maxlength="120" placeholder="What needs to be done?" required></label>
+      <label class="field"><span>Description</span><textarea id="task-description" rows="5" maxlength="2000" placeholder="Add the context and expected outcome" required></textarea></label>
+      <div class="field-row"><label class="field"><span>Priority</span><select id="task-priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label><label class="field"><span>Status</span><select id="task-status"><option value="todo">To do</option><option value="in-progress">In progress</option><option value="done">Done</option></select></label></div>
+      <div class="field-row"><label class="field"><span>Assign to</span><select id="task-assignee"></select></label><label class="field"><span>Deadline</span><input id="task-deadline" type="date"></label></div>
+      <div class="dialog-actions"><button class="button button-secondary dialog-close" type="button">Cancel</button><button class="button button-primary" id="task-save" type="submit">Create task</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog dialog-wide" id="bug-dialog">
+    <form id="bug-form" novalidate>
+      <div class="dialog-head"><div><span class="overline">Bug report</span><h2 id="bug-dialog-title">Report an issue</h2></div><button class="icon-button dialog-close" type="button" aria-label="Close"><svg><use href="#icon-x"/></svg></button></div>
+      <input id="bug-id" type="hidden">
+      <div class="form-alert" id="bug-error" role="alert"></div>
+      <label class="field"><span>Title</span><input id="bug-title" maxlength="120" placeholder="Describe the problem briefly" required></label>
+      <label class="field"><span>Description</span><textarea id="bug-description" rows="5" maxlength="3000" placeholder="What happened, and how can it be reproduced?" required></textarea></label>
+      <label class="field"><span>Page URL <small>Optional</small></span><input id="bug-url" type="url" maxlength="2000" placeholder="https://example.com/page"></label>
+      <div class="field-row"><label class="field"><span>Priority</span><select id="bug-priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option><option value="critical">Critical</option></select></label><label class="field"><span>Status</span><select id="bug-status"><option value="open">Open</option><option value="in-progress">In progress</option><option value="testing">Testing</option><option value="resolved">Resolved</option><option value="closed">Closed</option></select></label></div>
+      <label class="field"><span>Assign to</span><select id="bug-assignee"></select></label>
+      <div class="field"><span>Screenshot <small>PNG, JPG or WEBP · max 5MB</small></span><label class="upload"><input id="bug-screenshot" type="file" accept="image/png,image/jpeg,image/webp"><svg><use href="#icon-upload"/></svg><strong>Choose an image</strong><small>or drop it here</small></label><div class="image-preview" id="image-preview"></div></div>
+      <div class="dialog-actions"><button class="button button-secondary dialog-close" type="button">Cancel</button><button class="button button-primary" id="bug-save" type="submit">Report bug</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog detail-dialog" id="detail-dialog"><div class="dialog-head"><div><span class="overline" id="detail-eyebrow">Details</span><h2 id="detail-title"></h2></div><button class="icon-button dialog-close" type="button" aria-label="Close"><svg><use href="#icon-x"/></svg></button></div><div id="detail-content"></div></dialog>
+  <dialog class="dialog confirm-dialog" id="confirm-dialog"><div class="confirm-symbol"><svg><use href="#icon-bug"/></svg></div><h2>Delete this item?</h2><p id="confirm-copy">This action cannot be undone.</p><div class="dialog-actions"><button class="button button-secondary dialog-close" type="button">Cancel</button><button class="button button-danger" id="confirm-delete" type="button">Delete permanently</button></div></dialog>
+  <dialog class="lightbox" id="lightbox"><button class="icon-button dialog-close" type="button" aria-label="Close image"><svg><use href="#icon-x"/></svg></button><img id="lightbox-image" alt="Bug screenshot"></dialog>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

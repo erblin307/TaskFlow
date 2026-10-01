@@ -1,0 +1,14 @@
+{
+  "name": "taskflow-secure",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Secure multi-user task and bug tracking application",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/server.js",
+    "check": "node --check server/server.js && node --check server/database.js && node --check server/security.js && node --check public/js/app.js && node --check public/js/api.js",
+    "test": "node test/security-integration.test.js"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
